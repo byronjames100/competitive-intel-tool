@@ -11,10 +11,10 @@ Get back a structured brief with:
 - 3 strategic implications for your business
 
 ## Project Structure
-/docs          → Design document, product brief, and assignment materials
-/prompts       → All prompt versions with change log
-/tests         → Stress test inputs and documented outputs
-/screenshots   → Demo screenshots for product brief and presentation
+'/docs'          → Design document, product brief, and assignment materials
+'/prompts'       → All prompt versions with change log
+'/tests'         → Stress test inputs and documented outputs
+'/screenshots'   → Demo screenshots for product brief and presentation
 
 ## Collaborators
 - byronjames100 (repo owner)
