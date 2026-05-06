@@ -669,6 +669,247 @@
     .brief-company { font-size: 18px; }
     .mode-tab { font-size: 10px; padding: 8px 6px; }
   }
+
+  /* AUTH MODAL */
+  .auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(14,18,26,0.82);
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .auth-overlay.hidden { display: none; }
+
+  .auth-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    width: 100%;
+    max-width: 380px;
+    margin: 16px;
+  }
+
+  .auth-header {
+    background: var(--accent);
+    padding: 16px 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .auth-header-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.1em;
+  }
+  .auth-header-sub {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+
+  .auth-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+  }
+  .auth-tab {
+    flex: 1;
+    padding: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-dim);
+    border: none;
+    background: var(--panel2);
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .auth-tab.active {
+    color: var(--accent);
+    background: var(--panel);
+    border-bottom-color: var(--accent);
+  }
+
+  .auth-body { padding: 20px; }
+
+  .auth-form { display: flex; flex-direction: column; gap: 12px; }
+  .auth-form.hidden { display: none; }
+
+  .auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .auth-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .auth-input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    padding: 9px 12px;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s;
+  }
+  .auth-input:focus { border-color: var(--accent); }
+
+  .auth-submit {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 11px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: opacity 0.15s;
+  }
+  .auth-submit:hover { opacity: 0.88; }
+  .auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .auth-error {
+    font-size: 12px;
+    color: var(--red);
+    text-align: center;
+    min-height: 18px;
+  }
+
+  /* USER INDICATOR in status bar */
+  .user-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .user-email {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .logout-btn {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: none;
+    border: 1px solid var(--border);
+    padding: 3px 7px;
+    cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .logout-btn:hover { color: var(--red); border-color: var(--red); }
+
+  /* HISTORY BUTTON in status bar */
+  .history-btn {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: none;
+    border: 1px solid var(--border);
+    padding: 3px 7px;
+    cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    margin-left: 10px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .history-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .history-btn.active { color: var(--accent); border-color: var(--accent); background: rgba(26,58,92,0.07); }
+
+  /* HISTORY PANEL */
+  .history-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+    display: none;
+  }
+  .history-panel.open { display: block; }
+
+  .history-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel2);
+  }
+  .history-panel-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .history-empty {
+    padding: 20px 14px;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+  }
+  .history-list { list-style: none; }
+  .history-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .history-item:last-child { border-bottom: none; }
+  .history-item:hover { background: var(--panel2); }
+  .history-item-info { flex: 1; min-width: 0; }
+  .history-item-company {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-bright);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .history-item-meta {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .history-item-del {
+    background: none;
+    border: none;
+    color: var(--border-bright);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 4px;
+    flex-shrink: 0;
+    transition: color 0.12s;
+  }
+  .history-item-del:hover { color: var(--red); }
 </style>
 </head>
 <body>
@@ -825,7 +1066,20 @@
   <div class="status-bar">
     <div class="status-dot"></div>
     <span>SYSTEM ONLINE</span>
-    <span style="margin-left:auto;" id="timestamp">—</span>
+    <div class="user-indicator" id="user-indicator" style="display:none;">
+      <span class="user-email" id="user-email-display"></span>
+      <button class="history-btn" id="history-toggle-btn" onclick="toggleHistory()">HISTORY</button>
+      <button class="logout-btn" onclick="logout()">LOGOUT</button>
+    </div>
+    <span id="timestamp" style="margin-left:8px;">—</span>
+  </div>
+
+  <!-- HISTORY PANEL -->
+  <div class="history-panel" id="history-panel">
+    <div class="history-panel-header">
+      <span class="history-panel-title">Recent Briefs</span>
+    </div>
+    <div id="history-body"></div>
   </div>
 
   <!-- INPUT PANEL -->
@@ -999,6 +1253,52 @@
 
   </div>
 
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay hidden" id="auth-overlay">
+  <div class="auth-card">
+    <div class="auth-header">
+      <span class="auth-header-brand">IRONSCOUT</span>
+      <span class="auth-header-sub">Tactical Intelligence</span>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Login</button>
+      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Create Account</button>
+    </div>
+    <div class="auth-body">
+      <!-- LOGIN FORM -->
+      <form class="auth-form" id="form-login" onsubmit="handleLogin(event)">
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input class="auth-input" id="login-email" type="email" autocomplete="email" required placeholder="you@company.com" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input class="auth-input" id="login-password" type="password" autocomplete="current-password" required placeholder="••••••••" />
+        </div>
+        <div class="auth-error" id="login-error"></div>
+        <button class="auth-submit" type="submit" id="login-submit">ACCESS SYSTEM</button>
+      </form>
+      <!-- REGISTER FORM -->
+      <form class="auth-form hidden" id="form-register" onsubmit="handleRegister(event)">
+        <div class="auth-field">
+          <label class="auth-label">Name</label>
+          <input class="auth-input" id="reg-name" type="text" autocomplete="name" placeholder="First Last" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Email</label>
+          <input class="auth-input" id="reg-email" type="email" autocomplete="email" required placeholder="you@company.com" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password <span style="font-weight:400; text-transform:none; letter-spacing:0;">(min. 8 characters)</span></label>
+          <input class="auth-input" id="reg-password" type="password" autocomplete="new-password" required placeholder="••••••••" />
+        </div>
+        <div class="auth-error" id="reg-error"></div>
+        <button class="auth-submit" type="submit" id="reg-submit">CREATE ACCOUNT</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1182,545 +1482,6 @@ async function executeScan(input, lowConf) {
     }
   }
 }
-
-function renderBrief(b) {
-  currentBrief = b;
-  // Header
-  document.getElementById('brief-company').textContent = b.company_name || 'UNKNOWN TARGET';
-
-  const meta = document.getElementById('brief-meta');
-  meta.innerHTML = '';
-  if (b.industry) meta.innerHTML += `<span class="brief-tag tag-industry">${b.industry}</span>`;
-  if (b.employee_estimate) meta.innerHTML += `<span class="brief-tag tag-size">${b.employee_estimate} EMP</span>`;
-
-  // Sections
-  document.getElementById('section-product').textContent = b.product_overview || 'Not confirmed in available data.';
-
-  const pl = document.getElementById('section-products-list');
-  pl.innerHTML = '';
-  (b.top_products || []).forEach(p => {
-    const li = document.createElement('li');
-    li.textContent = p;
-    pl.appendChild(li);
-  });
-  if (!b.top_products || b.top_products.length === 0) {
-    pl.innerHTML = '<li>Not confirmed in available data.</li>';
-  }
-
-  document.getElementById('section-values').textContent = b.mission_values || 'Not confirmed in available data.';
-
-  const phil = document.getElementById('section-philanthropy');
-  phil.innerHTML = '';
-  (b.philanthropy || []).forEach(p => {
-    const li = document.createElement('li');
-    li.innerHTML = p;
-    phil.appendChild(li);
-  });
-  if (!b.philanthropy || b.philanthropy.length === 0) {
-    phil.innerHTML = '<li>No philanthropy data found in available sources.</li>';
-  }
-
-  const lead = document.getElementById('section-leadership');
-  lead.innerHTML = '';
-  (b.leadership || []).forEach(l => {
-    const li = document.createElement('li');
-    li.textContent = l;
-    lead.appendChild(li);
-  });
-  if (!b.leadership || b.leadership.length === 0) {
-    lead.innerHTML = '<li>Not confirmed in available data.</li>';
-  }
-
-  const sigs = document.getElementById('section-signals');
-  sigs.innerHTML = '';
-  (b.operational_signals || []).forEach(s => {
-    const li = document.createElement('li');
-    li.textContent = s;
-    sigs.appendChild(li);
-  });
-  if (!b.operational_signals || b.operational_signals.length === 0) {
-    sigs.innerHTML = '<li>No signals detected in available data.</li>';
-  }
-
-  const impl = document.getElementById('section-implications');
-  impl.innerHTML = '';
-  (b.strategic_implications || []).forEach(i => {
-    impl.innerHTML += `<div class="implication-item">
-      <div class="implication-num">IMPLICATION ${i.num}</div>
-      <div>${i.implication}</div>
-    </div>`;
-  });
-
-  // Confidence flag
-  const cf = document.getElementById('confidence-flag');
-  const ct = document.getElementById('confidence-text');
-  const ob = document.getElementById('override-btn');
-  const level = b.confidence_level || 'LOW';
-  cf.className = 'confidence-flag flag-' + level.toLowerCase();
-  ct.textContent = `${level} CONFIDENCE — ${b.confidence_reason || ''}`;
-  if (level === 'LOW') {
-    ob.style.display = 'block';
-  } else {
-    ob.style.display = 'none';
-  }
-
-  document.getElementById('output-panel').style.display = 'block';
-  document.getElementById('launch-btn').disabled = false;
-  document.getElementById('output-panel').scrollIntoView({ behavior: 'smooth' });
-}
-
-function buildBriefText() {
-  const company = document.getElementById('brief-company').textContent;
-  const date = new Date().toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'});
-  let t = '';
-  t += 'IRONSCOUT BRIEF — ' + company + '\n';
-  t += 'Generated: ' + date + '\n';
-  t += '='.repeat(44) + '\n\n';
-  t += 'PRODUCT OVERVIEW\n';
-  t += (document.getElementById('section-product').textContent || '—') + '\n\n';
-  t += 'TOP PRODUCTS / SERVICES\n';
-  document.querySelectorAll('#section-products-list li').forEach(li => { t += '• ' + li.textContent.trim() + '\n'; });
-  t += '\n';
-  t += 'MISSION & VALUES\n';
-  t += (document.getElementById('section-values').textContent || '—') + '\n\n';
-  t += 'SENIOR LEADERSHIP\n';
-  document.querySelectorAll('#section-leadership li').forEach(li => { t += '• ' + li.textContent.trim() + '\n'; });
-  t += '\n';
-  t += 'OPERATIONAL SIGNALS\n';
-  document.querySelectorAll('#section-signals li').forEach(li => { t += '• ' + li.textContent.trim() + '\n'; });
-  t += '\n';
-  t += 'STRATEGIC IMPLICATIONS\n';
-  document.querySelectorAll('.implication-item').forEach(el => { t += el.textContent.trim().replace(/\s+/g,' ') + '\n'; });
-  t += '\n' + '—'.repeat(44) + '\n';
-  t += 'Insights are AI-generated from public data and may contain errors.\n';
-  t += 'Verify all information before use. Not business, financial, or legal advice.';
-  return t;
-}
-
-function downloadPDF_legacy_removed() {
-  // replaced by server-side PDF export below
-  const btn = document.getElementById('pdf-btn');
-  const origHTML = btn.innerHTML;
-  btn.textContent = 'Preparing...';
-  btn.disabled = true;
-
-  const company = document.getElementById('brief-company').textContent || 'Brief';
-  const date = new Date().toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
-  const filename = 'IRONSCOUT_' + company.replace(/[^a-zA-Z0-9]/g,'_') + '_' + new Date().toISOString().slice(0,10) + '.html';
-
-  const product  = document.getElementById('section-product').textContent || '—';
-  const values   = document.getElementById('section-values').textContent || '—';
-  const industry = document.querySelector('.tag-industry') ? document.querySelector('.tag-industry').textContent : '';
-  const empSize  = document.querySelector('.tag-size')     ? document.querySelector('.tag-size').textContent     : '';
-  const cfText   = document.getElementById('confidence-text') ? document.getElementById('confidence-text').textContent : '';
-  const cfEl     = document.getElementById('confidence-flag');
-  const cfClass  = cfEl ? (cfEl.classList.contains('flag-high') ? 'high' : cfEl.classList.contains('flag-medium') ? 'medium' : 'low') : 'low';
-  const cfColor  = cfClass==='high' ? '#1a6e3a' : cfClass==='medium' ? '#a06010' : '#c0392b';
-  const cfBg     = cfClass==='high' ? '#eaf3de' : cfClass==='medium' ? '#faeeda' : '#fcebeb';
-
-  let productsList='', philanthropy='', leadership='', signals='', implications='';
-  document.querySelectorAll('#section-products-list li').forEach(li => { productsList += '<li>'+li.textContent.trim()+'</li>'; });
-  document.querySelectorAll('#section-philanthropy li').forEach(li => { philanthropy += '<li>'+li.textContent.trim()+'</li>'; });
-  document.querySelectorAll('#section-leadership li').forEach(li => { leadership   += '<li>'+li.textContent.trim()+'</li>'; });
-  document.querySelectorAll('#section-signals li').forEach(li => { signals += '<li>'+li.textContent.trim()+'</li>'; });
-  document.querySelectorAll('.implication-item').forEach(el => {
-    const num  = el.querySelector('.implication-num') ? el.querySelector('.implication-num').textContent.trim() : '';
-    const body = el.textContent.replace(num,'').trim();
-    implications += '<div class="impl"><span class="impl-num">'+num+'</span><p>'+body+'</p></div>';
-  });
-
-  const html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>IRONSCOUT Brief</title>'
-    + '<style>'
-    + '* { box-sizing:border-box; margin:0; padding:0; }'
-    + 'body { font-family:Arial,sans-serif; font-size:10pt; color:#1e2430; background:#fff; }'
-    + '.header { background:#1a3a5c; color:#fff; padding:14px 32px; display:flex; justify-content:space-between; align-items:center; }'
-    + '.hbrand { font-size:18pt; font-weight:700; letter-spacing:0.12em; }'
-    + '.hsub { font-size:7pt; letter-spacing:0.2em; color:#a0b8d0; margin-top:1px; }'
-    + '.hright { text-align:right; font-size:8pt; color:#a0b8d0; }'
-    + '.co-block { padding:16px 32px 10px; border-bottom:2px solid #1a3a5c; }'
-    + '.co-name { font-size:20pt; font-weight:700; letter-spacing:0.06em; }'
-    + '.co-meta { display:flex; gap:10px; margin-top:5px; }'
-    + '.tag { font-size:8pt; font-weight:700; letter-spacing:0.1em; padding:2px 8px; text-transform:uppercase; }'
-    + '.ti { background:rgba(26,58,92,0.1); color:#1a3a5c; } .ts { background:rgba(176,74,26,0.1); color:#b04a1a; }'
-    + '.cf { margin:10px 32px 0; padding:7px 12px; font-size:8pt; font-weight:600; letter-spacing:0.06em; background:'+cfBg+'; color:'+cfColor+'; }'
-    + '.body { padding:0 32px 24px; }'
-    + '.sec { margin-top:16px; page-break-inside:avoid; }'
-    + '.sec-head { display:flex; align-items:center; gap:8px; border-bottom:1px solid #c8d0dc; padding-bottom:4px; margin-bottom:8px; }'
-    + '.sec-num { font-size:7pt; font-weight:700; color:#6b7585; background:#edf0f4; padding:2px 5px; letter-spacing:0.08em; }'
-    + '.sec-title { font-size:10pt; font-weight:700; color:#1a3a5c; letter-spacing:0.14em; text-transform:uppercase; }'
-    + 'p { line-height:1.55; font-size:9.5pt; color:#2c3440; }'
-    + 'ul { padding-left:16px; } li { font-size:9.5pt; line-height:1.5; color:#2c3440; margin-bottom:2px; }'
-    + '.impl { background:#f4f6f9; border-left:3px solid #b04a1a; padding:8px 10px; margin-bottom:7px; }'
-    + '.impl-num { font-size:7.5pt; font-weight:700; color:#b04a1a; letter-spacing:0.1em; display:block; margin-bottom:3px; }'
-    + '.disc { margin:20px 32px 24px; padding:10px 12px; border-top:1px solid #c8d0dc; font-size:7.5pt; font-style:italic; color:#6b7585; line-height:1.5; }'
-    + '@media print { @page{size:letter; margin:0.5in;} body{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }'
-    + '</style></head><body>'
-    + '<div class="header"><div><div class="hbrand">IRONSCOUT</div><div class="hsub">TACTICAL INTELLIGENCE</div></div>'
-    + '<div class="hright">'+date+'<br>Intelligence Brief</div></div>'
-    + '<div class="co-block"><div class="co-name">'+company+'</div>'
-    + '<div class="co-meta">'+(industry?'<span class="tag ti">'+industry+'</span>':'')+(empSize?'<span class="tag ts">'+empSize+'</span>':'')+'</div></div>'
-    + (cfText ? '<div class="cf">&#9679; '+cfText+'</div>' : '')
-    + '<div class="body">'
-    + '<div class="sec"><div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Product Overview</span></div><p>'+product+'</p></div>'
-    + '<div class="sec"><div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Top Products / Services</span></div><ul>'+productsList+'</ul></div>'
-    + '<div class="sec"><div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Mission &amp; Values</span></div><p>'+values+'</p></div>'
-    + '<div class="sec"><div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Philanthropy &amp; Community</span></div><ul>'+philanthropy+'</ul></div>'
-    + '<div class="sec"><div class="sec-head"><span class="sec-num">05</span><span class="sec-title">Senior Leadership</span></div><ul>'+leadership+'</ul></div>'
-    + '<div class="sec"><div class="sec-head"><span class="sec-num">06</span><span class="sec-title">Operational Signals</span></div><ul>'+signals+'</ul></div>'
-    + '<div class="sec"><div class="sec-head"><span class="sec-num">07</span><span class="sec-title">Strategic Implications</span></div>'+implications+'</div>'
-    + '</div>'
-    + '<div class="disc">Insights are AI-generated from public data and may contain errors. Verify all information before use. Not business, financial, or legal advice.</div>'
-    + '</body></html>';
-
-  // Create blob and trigger download via <a> — no window.open needed
-  const blob = new Blob([html], {type: 'text/html'});
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-  btn.innerHTML = origHTML;
-  btn.disabled  = false;
-  btn.style.borderColor = 'var(--green)';
-  btn.style.color       = 'var(--green)';
-  setTimeout(() => { btn.style.borderColor=''; btn.style.color=''; }, 2500);
-}
-
-function renderBrief(b) {
-  currentBrief = b;
-  // Header
-  document.getElementById('brief-company').textContent = b.company_name || 'UNKNOWN TARGET';
-
-  const meta = document.getElementById('brief-meta');
-  meta.innerHTML = '';
-  if (b.industry) meta.innerHTML += `<span class="brief-tag tag-industry">${b.industry}</span>`;
-  if (b.employee_estimate) meta.innerHTML += `<span class="brief-tag tag-size">${b.employee_estimate} EMP</span>`;
-
-  // Sections
-  document.getElementById('section-product').textContent = b.product_overview || 'Not confirmed in available data.';
-
-  const pl = document.getElementById('section-products-list');
-  pl.innerHTML = '';
-  (b.top_products || []).forEach(p => {
-    const li = document.createElement('li');
-    li.textContent = p;
-    pl.appendChild(li);
-  });
-  if (!b.top_products || b.top_products.length === 0) {
-    pl.innerHTML = '<li>Not confirmed in available data.</li>';
-  }
-
-  document.getElementById('section-values').textContent = b.mission_values || 'Not confirmed in available data.';
-
-  const phil = document.getElementById('section-philanthropy');
-  phil.innerHTML = '';
-  (b.philanthropy || []).forEach(p => {
-    const li = document.createElement('li');
-    li.innerHTML = p;
-    phil.appendChild(li);
-  });
-  if (!b.philanthropy || b.philanthropy.length === 0) {
-    phil.innerHTML = '<li>No philanthropy data found in available sources.</li>';
-  }
-
-  const lead = document.getElementById('section-leadership');
-  lead.innerHTML = '';
-  (b.leadership || []).forEach(l => {
-    const li = document.createElement('li');
-    li.textContent = l;
-    lead.appendChild(li);
-  });
-  if (!b.leadership || b.leadership.length === 0) {
-    lead.innerHTML = '<li>Not confirmed in available data.</li>';
-  }
-
-  const sigs = document.getElementById('section-signals');
-  sigs.innerHTML = '';
-  (b.operational_signals || []).forEach(s => {
-    const li = document.createElement('li');
-    li.textContent = s;
-    sigs.appendChild(li);
-  });
-  if (!b.operational_signals || b.operational_signals.length === 0) {
-    sigs.innerHTML = '<li>No signals detected in available data.</li>';
-  }
-
-  const impl = document.getElementById('section-implications');
-  impl.innerHTML = '';
-  (b.strategic_implications || []).forEach(i => {
-    impl.innerHTML += `<div class="implication-item">
-      <div class="implication-num">IMPLICATION ${i.num}</div>
-      <div>${i.implication}</div>
-    </div>`;
-  });
-
-  // Confidence flag
-  const cf = document.getElementById('confidence-flag');
-  const ct = document.getElementById('confidence-text');
-  const ob = document.getElementById('override-btn');
-  const level = b.confidence_level || 'LOW';
-  cf.className = 'confidence-flag flag-' + level.toLowerCase();
-  ct.textContent = `${level} CONFIDENCE — ${b.confidence_reason || ''}`;
-  if (level === 'LOW') {
-    ob.style.display = 'block';
-  } else {
-    ob.style.display = 'none';
-  }
-
-  document.getElementById('output-panel').style.display = 'block';
-  document.getElementById('launch-btn').disabled = false;
-  document.getElementById('output-panel').scrollIntoView({ behavior: 'smooth' });
-}
-
-function buildBriefText() {
-  const company = document.getElementById('brief-company').textContent;
-  const date = new Date().toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'});
-  let t = '';
-  t += 'IRONSCOUT BRIEF — ' + company + '\n';
-  t += 'Generated: ' + date + '\n';
-  t += '='.repeat(44) + '\n\n';
-  t += 'PRODUCT OVERVIEW\n';
-  t += (document.getElementById('section-product').textContent || '—') + '\n\n';
-  t += 'TOP PRODUCTS / SERVICES\n';
-  document.querySelectorAll('#section-products-list li').forEach(li => { t += '• ' + li.textContent.trim() + '\n'; });
-  t += '\n';
-  t += 'MISSION & VALUES\n';
-  t += (document.getElementById('section-values').textContent || '—') + '\n\n';
-  t += 'SENIOR LEADERSHIP\n';
-  document.querySelectorAll('#section-leadership li').forEach(li => { t += '• ' + li.textContent.trim() + '\n'; });
-  t += '\n';
-  t += 'OPERATIONAL SIGNALS\n';
-  document.querySelectorAll('#section-signals li').forEach(li => { t += '• ' + li.textContent.trim() + '\n'; });
-  t += '\n';
-  t += 'STRATEGIC IMPLICATIONS\n';
-  document.querySelectorAll('.implication-item').forEach(el => { t += el.textContent.trim().replace(/\s+/g,' ') + '\n'; });
-  t += '\n' + '—'.repeat(44) + '\n';
-  t += 'Insights are AI-generated from public data and may contain errors.\n';
-  t += 'Verify all information before use. Not business, financial, or legal advice.';
-  return t;
-}
-
-function downloadPDF() {
-  const btn = document.getElementById('pdf-btn');
-  const orig = btn.innerHTML;
-  btn.textContent = 'Generating...';
-  btn.disabled = true;
-
-  const company = document.getElementById('brief-company').textContent || 'IRONSCOUT Brief';
-  const date = new Date().toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'});
-  const filename = 'IRONSCOUT_' + company.replace(/[^a-zA-Z0-9]/g,'_') + '_' + new Date().toISOString().slice(0,10) + '.pdf';
-
-  // Load jsPDF from CDN then generate
-  if (window.jspdf && window.jspdf.jsPDF) {
-    _generatePDF(company, date, filename, btn, orig);
-  } else {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-    script.onload = () => _generatePDF(company, date, filename, btn, orig);
-    script.onerror = () => {
-      btn.innerHTML = orig;
-      btn.disabled = false;
-      alert('Could not load PDF library. Check your connection and try again.');
-    };
-    document.head.appendChild(script);
-  }
-}
-
-function _generatePDF(company, date, filename, btn, orig) {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'letter' });
-
-  const pageW = doc.internal.pageSize.getWidth();
-  const pageH = doc.internal.pageSize.getHeight();
-  const margin = 48;
-  const contentW = pageW - margin * 2;
-  let y = margin;
-
-  const DARK  = [30, 36, 48];
-  const MID   = [70, 82, 100];
-  const DIM   = [110, 120, 135];
-  const LIGHT = [200, 208, 220];
-  const ACCENT= [26, 58, 92];
-  const WHITE = [255, 255, 255];
-
-  function checkPage(needed) {
-    if (y + needed > pageH - margin) {
-      doc.addPage();
-      y = margin;
-      drawHeader();
-    }
-  }
-
-  function drawHeader() {
-    doc.setFillColor(...ACCENT);
-    doc.rect(0, 0, pageW, 36, 'F');
-    doc.setFont('helvetica','bold');
-    doc.setFontSize(14);
-    doc.setTextColor(...WHITE);
-    doc.text('IRONSCOUT', margin, 24);
-    doc.setFont('helvetica','normal');
-    doc.setFontSize(8);
-    doc.setTextColor(180,190,210);
-    doc.text('TACTICAL INTELLIGENCE', margin + 88, 24);
-    doc.text(company.toUpperCase(), pageW - margin, 24, {align:'right'});
-    y = 56;
-  }
-
-  function sectionHeader(label) {
-    checkPage(32);
-    doc.setFillColor(240, 242, 246);
-    doc.rect(margin, y, contentW, 20, 'F');
-    doc.setDrawColor(180, 190, 210);
-    doc.setLineWidth(0.5);
-    doc.rect(margin, y, contentW, 20, 'S');
-    doc.setFont('helvetica','bold');
-    doc.setFontSize(8);
-    doc.setTextColor(...ACCENT);
-    doc.text(label, margin + 8, y + 13);
-    y += 26;
-  }
-
-  function bodyText(text, indent) {
-    if (!text || text === '—') return;
-    doc.setFont('helvetica','normal');
-    doc.setFontSize(9.5);
-    doc.setTextColor(...DARK);
-    const lines = doc.splitTextToSize(text, contentW - (indent||0) - 8);
-    lines.forEach(line => {
-      checkPage(14);
-      doc.text(line, margin + (indent||0) + 4, y);
-      y += 13;
-    });
-    y += 4;
-  }
-
-  function bulletList(selector, prefix) {
-    document.querySelectorAll(selector).forEach(el => {
-      const txt = (prefix || '•  ') + el.textContent.trim();
-      doc.setFont('helvetica','normal');
-      doc.setFontSize(9.5);
-      doc.setTextColor(...DARK);
-      const lines = doc.splitTextToSize(txt, contentW - 16);
-      lines.forEach((line, i) => {
-        checkPage(14);
-        doc.text(line, margin + (i === 0 ? 4 : 14), y);
-        y += 13;
-      });
-    });
-    y += 4;
-  }
-
-  // PAGE 1 HEADER
-  drawHeader();
-
-  // Company title block
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(20);
-  doc.setTextColor(...DARK);
-  doc.text(company, margin, y + 4);
-  y += 28;
-
-  // Meta row
-  doc.setFont('helvetica','normal');
-  doc.setFontSize(8);
-  doc.setTextColor(...DIM);
-  const industry = document.querySelector('.tag-industry');
-  const size = document.querySelector('.tag-size');
-  let meta = 'Generated: ' + date;
-  if (industry) meta += '   |   ' + industry.textContent;
-  if (size) meta += '   |   ' + size.textContent;
-  doc.text(meta, margin, y);
-  y += 6;
-
-  // Confidence flag
-  const cfText = document.getElementById('confidence-text');
-  if (cfText) {
-    const cfEl = document.getElementById('confidence-flag');
-    const isHigh = cfEl && cfEl.classList.contains('flag-high');
-    const isMed  = cfEl && cfEl.classList.contains('flag-medium');
-    doc.setFillColor(isHigh ? 0 : isMed ? 160 : 180, isHigh ? 130 : isMed ? 120 : 40, isHigh ? 60 : isMed ? 20 : 40);
-    doc.setFillColor(isHigh ? 230 : isMed ? 255 : 255, isHigh ? 248 : isMed ? 244 : 235, isHigh ? 236 : isMed ? 220 : 220);
-    doc.roundedRect(margin, y + 2, contentW, 16, 3, 3, 'F');
-    doc.setFont('helvetica','bold');
-    doc.setFontSize(7.5);
-    doc.setTextColor(isHigh ? 26 : isMed ? 120 : 160, isHigh ? 100 : isMed ? 80 : 40, isHigh ? 50 : isMed ? 20 : 30);
-    doc.text('● ' + cfText.textContent, margin + 6, y + 13);
-    y += 26;
-  }
-
-  doc.setDrawColor(...LIGHT);
-  doc.setLineWidth(0.5);
-  doc.line(margin, y, pageW - margin, y);
-  y += 14;
-
-  // SECTIONS
-  sectionHeader('01 — PRODUCT OVERVIEW');
-  bodyText(document.getElementById('section-product').textContent);
-
-  sectionHeader('02 — TOP PRODUCTS / SERVICES');
-  bulletList('#section-products-list li');
-
-  sectionHeader('03 — MISSION & VALUES');
-  bodyText(document.getElementById('section-values').textContent);
-
-  sectionHeader('04 — PHILANTHROPY & COMMUNITY');
-  bulletList('#section-philanthropy li');
-
-  sectionHeader('05 — SENIOR LEADERSHIP');
-  bulletList('#section-leadership li');
-
-  sectionHeader('06 — OPERATIONAL SIGNALS & PAIN POINTS');
-  bulletList('#section-signals li');
-
-  sectionHeader('07 — STRATEGIC IMPLICATIONS');
-  document.querySelectorAll('.implication-item').forEach(el => {
-    checkPage(40);
-    const numEl = el.querySelector('.implication-num');
-    const num = numEl ? numEl.textContent.trim() : '';
-    const body = el.textContent.replace(num, '').trim();
-    doc.setFont('helvetica','bold');
-    doc.setFontSize(8);
-    doc.setTextColor(...ACCENT);
-    doc.text(num, margin + 4, y);
-    y += 12;
-    bodyText(body, 8);
-  });
-
-  // DISCLAIMER FOOTER on last page
-  checkPage(40);
-  y += 8;
-  doc.setDrawColor(...LIGHT);
-  doc.line(margin, y, pageW - margin, y);
-  y += 10;
-  doc.setFont('helvetica','italic');
-  doc.setFontSize(7.5);
-  doc.setTextColor(...DIM);
-  const disclaimer = 'Insights are AI-generated from public data and may contain errors. Verify all information before use. Not business, financial, or legal advice.';
-  const dLines = doc.splitTextToSize(disclaimer, contentW);
-  dLines.forEach(l => { doc.text(l, margin, y); y += 11; });
-
-  // Page numbers
-  const pageCount = doc.internal.getNumberOfPages();
-  for (let i = 1; i <= pageCount; i++) {
-    doc.setPage(i);
-    doc.setFont('helvetica','normal');
-    doc.setFontSize(7);
-    doc.setTextColor(...DIM);
-    doc.text('IRONSCOUT  |  Page ' + i + ' of ' + pageCount, pageW / 2, pageH - 20, {align:'center'});
-  }
-
-  doc.save(filename);
-  btn.innerHTML = orig;
-  btn.disabled = false;
-  btn.style.borderColor = 'var(--green)';
-  btn.style.color = 'var(--green)';
-  setTimeout(() => { btn.style.borderColor = ''; btn.style.color = ''; }, 2500);
-}
-
 
 function renderBrief(b) {
   currentBrief = b;
@@ -2000,6 +1761,177 @@ async function downloadPDF() {
   } finally {
     btn.disabled = false;
   }
+}
+
+// ── AUTH ────────────────────────────────────────────────────────────────────
+
+let currentUser = null;
+
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/auth/me', { credentials: 'include' });
+    if (res.ok) {
+      currentUser = await res.json();
+      onAuthenticated();
+    } else {
+      showAuthModal();
+    }
+  } catch {
+    showAuthModal();
+  }
+}
+
+function onAuthenticated() {
+  document.getElementById('auth-overlay').classList.add('hidden');
+  document.getElementById('user-indicator').style.display = 'flex';
+  document.getElementById('user-email-display').textContent = currentUser.email;
+}
+
+function showAuthModal() {
+  document.getElementById('auth-overlay').classList.remove('hidden');
+  document.getElementById('user-indicator').style.display = 'none';
+}
+
+function switchAuthTab(tab) {
+  const isLogin = tab === 'login';
+  document.getElementById('tab-login').classList.toggle('active', isLogin);
+  document.getElementById('tab-register').classList.toggle('active', !isLogin);
+  document.getElementById('form-login').classList.toggle('hidden', !isLogin);
+  document.getElementById('form-register').classList.toggle('hidden', isLogin);
+  document.getElementById('login-error').textContent = '';
+  document.getElementById('reg-error').textContent = '';
+}
+
+async function handleLogin(e) {
+  e.preventDefault();
+  const btn = document.getElementById('login-submit');
+  const errEl = document.getElementById('login-error');
+  errEl.textContent = '';
+  btn.disabled = true;
+  btn.textContent = 'Authenticating...';
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        email: document.getElementById('login-email').value,
+        password: document.getElementById('login-password').value
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) { errEl.textContent = data.error; return; }
+    currentUser = data;
+    onAuthenticated();
+  } catch {
+    errEl.textContent = 'Connection error. Please try again.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'ACCESS SYSTEM';
+  }
+}
+
+async function handleRegister(e) {
+  e.preventDefault();
+  const btn = document.getElementById('reg-submit');
+  const errEl = document.getElementById('reg-error');
+  errEl.textContent = '';
+  btn.disabled = true;
+  btn.textContent = 'Creating Account...';
+  try {
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        email: document.getElementById('reg-email').value,
+        password: document.getElementById('reg-password').value,
+        name: document.getElementById('reg-name').value
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) { errEl.textContent = data.error; return; }
+    currentUser = data;
+    onAuthenticated();
+  } catch {
+    errEl.textContent = 'Connection error. Please try again.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'CREATE ACCOUNT';
+  }
+}
+
+async function logout() {
+  await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+  currentUser = null;
+  showAuthModal();
+  switchAuthTab('login');
+}
+
+checkAuth();
+
+// ── BRIEF HISTORY ────────────────────────────────────────────────────────────
+
+let historyOpen = false;
+
+async function toggleHistory() {
+  historyOpen = !historyOpen;
+  const panel = document.getElementById('history-panel');
+  const btn   = document.getElementById('history-toggle-btn');
+  panel.classList.toggle('open', historyOpen);
+  btn.classList.toggle('active', historyOpen);
+  if (historyOpen) await loadHistory();
+}
+
+async function loadHistory() {
+  const body = document.getElementById('history-body');
+  body.innerHTML = '<div class="history-empty">Loading...</div>';
+  try {
+    const res = await fetch('/api/briefs', { credentials: 'include' });
+    if (!res.ok) throw new Error('Failed to load history.');
+    const items = await res.json();
+    renderHistory(items);
+  } catch (err) {
+    body.innerHTML = `<div class="history-empty">${err.message}</div>`;
+  }
+}
+
+function renderHistory(items) {
+  const body = document.getElementById('history-body');
+  if (!items.length) {
+    body.innerHTML = '<div class="history-empty">No briefs yet. Generate your first brief above.</div>';
+    return;
+  }
+  const ul = document.createElement('ul');
+  ul.className = 'history-list';
+  items.forEach(item => {
+    const li = document.createElement('li');
+    li.className = 'history-item';
+    const date = new Date(item.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const meta = [date, item.url ? new URL(item.url).hostname : 'Pasted text'].filter(Boolean).join(' · ');
+    li.innerHTML = `
+      <div class="history-item-info">
+        <div class="history-item-company">${item.company}</div>
+        <div class="history-item-meta">${meta}</div>
+      </div>
+      <button class="history-item-del" title="Delete" onclick="deleteHistoryItem(event, ${item.id})">×</button>
+    `;
+    li.addEventListener('click', (e) => {
+      if (e.target.closest('.history-item-del')) return;
+      renderBrief(item.brief);
+      toggleHistory();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    ul.appendChild(li);
+  });
+  body.innerHTML = '';
+  body.appendChild(ul);
+}
+
+async function deleteHistoryItem(e, id) {
+  e.stopPropagation();
+  const res = await fetch(`/api/briefs/${id}`, { method: 'DELETE', credentials: 'include' });
+  if (res.ok) await loadHistory();
 }
 </script>
 </body>
