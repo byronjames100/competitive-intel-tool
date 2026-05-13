@@ -792,68 +792,106 @@
     min-height: 18px;
   }
 
-  /* USER INDICATOR in status bar */
+  /* USER MENU BUTTON */
   .user-indicator {
     display: flex;
     align-items: center;
-    gap: 8px;
+    margin-left: auto;
+    position: relative;
+  }
+  .user-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .user-menu-btn:hover, .user-menu-btn.open {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(26,58,92,0.05);
+  }
+  .user-menu-chevron {
+    font-size: 9px;
+    transition: transform 0.15s;
+    opacity: 0.6;
+  }
+  .user-menu-btn.open .user-menu-chevron { transform: rotate(180deg); }
+  .user-menu-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* DROPDOWN MENU */
+  .user-menu-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    min-width: 180px;
+    z-index: 500;
+  }
+  .user-menu-dropdown.hidden { display: none; }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    background: none;
+    border: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.12s, color 0.12s;
+    border-bottom: 1px solid var(--border);
+  }
+  .menu-item:last-child { border-bottom: none; }
+  .menu-item:hover { background: var(--panel2); color: var(--accent); }
+  .menu-item.danger:hover { color: var(--red); background: rgba(192,57,43,0.05); }
+  .menu-item:disabled, .menu-item.disabled {
+    color: var(--text-dim);
+    cursor: default;
+    opacity: 0.6;
+  }
+  .menu-item:disabled:hover, .menu-item.disabled:hover {
+    background: none;
+    color: var(--text-dim);
+  }
+  .menu-item-badge {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    padding: 1px 5px;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
     margin-left: auto;
   }
-  .user-email {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--text-dim);
-    text-transform: uppercase;
+  .menu-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2px 0;
   }
-  .logout-btn {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    background: none;
-    border: 1px solid var(--border);
-    padding: 3px 7px;
-    cursor: pointer;
-    font-family: 'Barlow Condensed', sans-serif;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .logout-btn:hover { color: var(--red); border-color: var(--red); }
-
-  /* PROFILE BUTTON in status bar */
-  .profile-btn {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--amber);
-    background: none;
-    border: 1px solid var(--amber);
-    padding: 3px 7px;
-    cursor: pointer;
-    font-family: 'Barlow Condensed', sans-serif;
-    transition: color 0.15s, border-color 0.15s, background 0.15s;
-  }
-  .profile-btn:hover { background: rgba(160,96,16,0.08); }
-
-  /* HISTORY BUTTON in status bar */
-  .history-btn {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    background: none;
-    border: 1px solid var(--border);
-    padding: 3px 7px;
-    cursor: pointer;
-    font-family: 'Barlow Condensed', sans-serif;
-    margin-left: 10px;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .history-btn:hover { color: var(--accent); border-color: var(--accent); }
-  .history-btn.active { color: var(--accent); border-color: var(--accent); background: rgba(26,58,92,0.07); }
+  .menu-item-icon { font-size: 13px; width: 16px; text-align: center; }
 
   /* HISTORY PANEL */
   .history-panel {
@@ -926,6 +964,108 @@
     transition: color 0.12s;
   }
   .history-item-del:hover { color: var(--red); }
+
+  /* PROFILE PANEL */
+  .profile-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+    display: none;
+  }
+  .profile-panel.open { display: block; }
+  .profile-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: var(--panel2);
+    border-bottom: 1px solid var(--border);
+  }
+  .profile-panel-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .profile-panel-actions { display: flex; gap: 6px; }
+  .pp-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--text-dim);
+    transition: all 0.15s;
+  }
+  .pp-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .pp-btn.primary { border-color: var(--accent); color: var(--accent); }
+  .pp-btn.primary:hover { background: rgba(26,58,92,0.08); }
+  .pp-btn.danger:hover { color: var(--red); border-color: var(--red); }
+
+  .profile-panel-body { padding: 16px; }
+
+  /* VIEW MODE */
+  .pp-section { margin-bottom: 18px; }
+  .pp-section:last-child { margin-bottom: 0; }
+  .pp-section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pp-fields { display: flex; flex-direction: column; gap: 8px; }
+  .pp-field { display: flex; flex-direction: column; gap: 2px; }
+  .pp-field-row { display: flex; gap: 16px; }
+  .pp-field-row .pp-field { flex: 1; }
+  .pp-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .pp-value {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .pp-value.empty { color: var(--text-dim); font-style: italic; font-size: 12px; }
+  .pp-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+  .pp-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    background: rgba(26,58,92,0.08);
+    color: var(--accent);
+    border: 1px solid rgba(26,58,92,0.18);
+  }
+  .pp-incomplete-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(160,96,16,0.06);
+    border: 1px solid rgba(160,96,16,0.25);
+    margin-bottom: 14px;
+    font-size: 12px;
+    color: var(--amber);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
 
   /* TOOL TABS */
   .tool-tabs {
@@ -1359,10 +1499,28 @@
     <div class="status-dot"></div>
     <span>SYSTEM ONLINE</span>
     <div class="user-indicator" id="user-indicator" style="display:none;">
-      <span class="user-email" id="user-email-display"></span>
-      <button class="profile-btn" id="profile-setup-btn" onclick="showProfileOverlay()" style="display:none;">COMPLETE PROFILE</button>
-      <button class="history-btn" id="history-toggle-btn" onclick="toggleHistory()">HISTORY</button>
-      <button class="logout-btn" onclick="logout()">LOGOUT</button>
+      <button class="user-menu-btn" id="user-menu-btn" onclick="toggleUserMenu()">
+        <span class="user-menu-dot" id="user-menu-dot" style="display:none;"></span>
+        <span id="user-name-display"></span>
+        <span class="user-menu-chevron">▾</span>
+      </button>
+      <div class="user-menu-dropdown hidden" id="user-menu-dropdown">
+        <button class="menu-item" onclick="openProfilePanel()">
+          <span class="menu-item-icon">◈</span> My Profile
+          <span class="menu-item-badge" id="menu-profile-badge" style="display:none;">Incomplete</span>
+        </button>
+        <button class="menu-item" onclick="toggleHistory(); closeUserMenu()">
+          <span class="menu-item-icon">◷</span> Brief History
+        </button>
+        <button class="menu-item disabled" disabled>
+          <span class="menu-item-icon">◉</span> Preferences
+          <span class="menu-item-badge">Soon</span>
+        </button>
+        <div class="menu-divider"></div>
+        <button class="menu-item danger" onclick="logout()">
+          <span class="menu-item-icon">→</span> Sign Out
+        </button>
+      </div>
     </div>
     <span id="timestamp" style="margin-left:8px;">—</span>
   </div>
@@ -1373,6 +1531,22 @@
       <span class="history-panel-title">Recent Briefs</span>
     </div>
     <div id="history-body"></div>
+  </div>
+
+  <!-- PROFILE PANEL -->
+  <div class="profile-panel" id="profile-panel">
+    <div class="profile-panel-header">
+      <span class="profile-panel-title">My Profile</span>
+      <div class="profile-panel-actions">
+        <button class="pp-btn primary" id="pp-edit-btn" onclick="enterProfileEditMode()">Edit</button>
+        <button class="pp-btn" id="pp-save-btn" style="display:none;" onclick="saveProfileFromPanel()">Save</button>
+        <button class="pp-btn danger" id="pp-cancel-btn" style="display:none;" onclick="cancelProfileEdit()">Cancel</button>
+        <button class="pp-btn" onclick="closeProfilePanel()">Close</button>
+      </div>
+    </div>
+    <div class="profile-panel-body" id="profile-panel-body">
+      <!-- rendered by JS -->
+    </div>
   </div>
 
   <!-- TOOL TABS -->
@@ -2198,19 +2372,15 @@ function switchToolTab(tab) {
 
 function applyProfileState() {
   const complete = currentUser && currentUser.profile_complete;
-  const tabScout = document.getElementById('tab-scout');
-  const lockIcon = document.getElementById('scout-lock-icon');
-  const profileBtn = document.getElementById('profile-setup-btn');
+  const tabScout  = document.getElementById('tab-scout');
+  const lockIcon  = document.getElementById('scout-lock-icon');
+  const dot       = document.getElementById('user-menu-dot');
+  const badge     = document.getElementById('menu-profile-badge');
 
-  if (complete) {
-    tabScout.classList.remove('locked');
-    lockIcon.textContent = '';
-    profileBtn.style.display = 'none';
-  } else {
-    tabScout.classList.add('locked');
-    lockIcon.textContent = '🔒';
-    profileBtn.style.display = currentUser ? 'inline-block' : 'none';
-  }
+  tabScout.classList.toggle('locked', !complete);
+  lockIcon.textContent = complete ? '' : '🔒';
+  if (dot)   dot.style.display   = complete ? 'none' : 'inline-block';
+  if (badge) badge.style.display = complete ? 'none' : 'inline-block';
 }
 
 // ── AUTH ────────────────────────────────────────────────────────────────────
@@ -2235,7 +2405,10 @@ async function checkAuth() {
 function onAuthenticated(fromRegister) {
   document.getElementById('auth-overlay').classList.add('hidden');
   document.getElementById('user-indicator').style.display = 'flex';
-  document.getElementById('user-email-display').textContent = currentUser.email;
+  const displayName = (currentUser.name && currentUser.name.trim())
+    ? currentUser.name.trim().split(' ')[0].toUpperCase()
+    : currentUser.email.split('@')[0].toUpperCase();
+  document.getElementById('user-name-display').textContent = displayName;
   applyProfileState();
 
   if (fromRegister && !currentUser.profile_complete) {
@@ -2318,13 +2491,301 @@ async function handleRegister(e) {
 }
 
 async function logout() {
+  closeUserMenu();
   await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
   currentUser = null;
+  closeProfilePanel();
   showAuthModal();
   switchAuthTab('login');
 }
 
 checkAuth();
+
+// ── USER MENU ────────────────────────────────────────────────────────────────
+
+function toggleUserMenu() {
+  const dropdown = document.getElementById('user-menu-dropdown');
+  const btn      = document.getElementById('user-menu-btn');
+  const open     = !dropdown.classList.contains('hidden');
+  if (open) { closeUserMenu(); } else {
+    dropdown.classList.remove('hidden');
+    btn.classList.add('open');
+    setTimeout(() => document.addEventListener('click', outsideMenuClick, { once: true }), 0);
+  }
+}
+
+function closeUserMenu() {
+  document.getElementById('user-menu-dropdown').classList.add('hidden');
+  document.getElementById('user-menu-btn').classList.remove('open');
+}
+
+function outsideMenuClick(e) {
+  if (!document.getElementById('user-menu-dropdown').contains(e.target) &&
+      !document.getElementById('user-menu-btn').contains(e.target)) {
+    closeUserMenu();
+  }
+}
+
+// ── PROFILE PANEL ─────────────────────────────────────────────────────────────
+
+let profilePanelData = null;
+let profilePanelEditing = false;
+
+async function openProfilePanel() {
+  closeUserMenu();
+  const panel = document.getElementById('profile-panel');
+  panel.classList.add('open');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  await loadProfilePanel();
+}
+
+function closeProfilePanel() {
+  document.getElementById('profile-panel').classList.remove('open');
+  profilePanelEditing = false;
+}
+
+async function loadProfilePanel() {
+  const body = document.getElementById('profile-panel-body');
+  body.innerHTML = '<div style="padding:16px;font-size:12px;color:var(--text-dim);">Loading…</div>';
+  try {
+    const res = await fetch('/api/profile', { credentials: 'include' });
+    if (!res.ok) throw new Error();
+    profilePanelData = await res.json();
+    renderProfileView();
+  } catch {
+    body.innerHTML = '<div style="padding:16px;font-size:12px;color:var(--red);">Failed to load profile.</div>';
+  }
+}
+
+function renderProfileView() {
+  profilePanelEditing = false;
+  document.getElementById('pp-edit-btn').style.display   = 'inline-block';
+  document.getElementById('pp-save-btn').style.display   = 'none';
+  document.getElementById('pp-cancel-btn').style.display = 'none';
+
+  const d = profilePanelData;
+  const empty = v => (!v || (Array.isArray(v) && v.length === 0));
+  const val   = (v, fallback='—') => empty(v) ? `<span class="pp-value empty">${fallback}</span>` : `<span class="pp-value">${escHtml(String(v))}</span>`;
+
+  const products = Array.isArray(d.profile_products) ? d.profile_products : [];
+
+  document.getElementById('profile-panel-body').innerHTML = `
+    ${!d.profile_complete ? `<div class="pp-incomplete-notice">⚠ Profile incomplete — SCOUT MATCH is locked until all required fields are saved.</div>` : ''}
+
+    <div class="pp-section">
+      <div class="pp-section-label">Your Company</div>
+      <div class="pp-fields">
+        <div class="pp-field-row">
+          <div class="pp-field">
+            <div class="pp-label">Company Name</div>
+            ${val(d.company_name, 'Not set')}
+          </div>
+          <div class="pp-field">
+            <div class="pp-label">Company Size</div>
+            ${val(d.company_size, 'Not set')}
+          </div>
+        </div>
+        <div class="pp-field">
+          <div class="pp-label">Website</div>
+          ${d.company_url
+            ? `<span class="pp-value"><a href="${escHtml(d.company_url)}" target="_blank" style="color:var(--accent);">${escHtml(d.company_url)}</a></span>`
+            : `<span class="pp-value empty">Not set</span>`}
+        </div>
+        <div class="pp-field">
+          <div class="pp-label">Industry / Specialty</div>
+          ${val(d.industry, 'Not set')}
+        </div>
+      </div>
+    </div>
+
+    <div class="pp-section">
+      <div class="pp-section-label">Your Territory</div>
+      <div class="pp-fields">
+        <div class="pp-field-row">
+          <div class="pp-field">
+            <div class="pp-label">Service Area</div>
+            ${val(d.service_area, 'Not set')}
+          </div>
+          <div class="pp-field">
+            <div class="pp-label">Radius</div>
+            ${val(d.service_radius_miles ? d.service_radius_miles + ' miles' : '', 'Not set')}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pp-section">
+      <div class="pp-section-label">What You Sell</div>
+      ${products.length
+        ? `<div class="pp-tags">${products.map(p => `<span class="pp-tag">${escHtml(p)}</span>`).join('')}</div>`
+        : `<span class="pp-value empty">No products added</span>`}
+    </div>
+
+    <div class="pp-section">
+      <div class="pp-section-label">Who You Sell To</div>
+      ${val(d.target_customer, 'Not set')}
+    </div>
+  `;
+}
+
+function enterProfileEditMode() {
+  profilePanelEditing = true;
+  document.getElementById('pp-edit-btn').style.display   = 'none';
+  document.getElementById('pp-save-btn').style.display   = 'inline-block';
+  document.getElementById('pp-cancel-btn').style.display = 'inline-block';
+
+  const d = profilePanelData;
+  const products = Array.isArray(d.profile_products) ? d.profile_products : [];
+  const productRows = products.length
+    ? products.map((p, i) => `
+        <div class="product-row">
+          <input class="profile-input" type="text" value="${escHtml(p)}" placeholder="Product or service…" />
+          ${i > 0 ? '<button class="product-remove" onclick="removePanelProductRow(this)" title="Remove">×</button>' : ''}
+        </div>`).join('')
+    : `<div class="product-row"><input class="profile-input" type="text" placeholder="Product or service…" /></div>`;
+
+  document.getElementById('profile-panel-body').innerHTML = `
+    <div class="pp-section">
+      <div class="pp-section-label">Your Company</div>
+      <div class="pp-fields">
+        <div class="pp-field">
+          <div class="pp-label">Company Name</div>
+          <input class="profile-input" id="ppe-company-name" type="text" value="${escHtml(d.company_name||'')}" placeholder="Acme Industrial" />
+        </div>
+        <div class="pp-field">
+          <div class="pp-label">Company Website</div>
+          <input class="profile-input" id="ppe-company-url" type="url" value="${escHtml(d.company_url||'')}" placeholder="https://yourcompany.com" />
+        </div>
+        <div class="pp-field-row">
+          <div class="pp-field">
+            <div class="pp-label">Industry / Specialty</div>
+            <input class="profile-input" id="ppe-industry" type="text" value="${escHtml(d.industry||'')}" placeholder="CNC machining…" />
+          </div>
+          <div class="pp-field">
+            <div class="pp-label">Company Size</div>
+            <select class="profile-select" id="ppe-company-size">
+              <option value="">— Select —</option>
+              ${['1–50','51–200','201–500','500+'].map(s =>
+                `<option value="${s}" ${d.company_size===s?'selected':''}>${s} employees</option>`).join('')}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pp-section">
+      <div class="pp-section-label">Your Territory</div>
+      <div class="pp-fields">
+        <div class="pp-field-row">
+          <div class="pp-field">
+            <div class="pp-label">City / State</div>
+            <input class="profile-input" id="ppe-service-area" type="text" value="${escHtml(d.service_area||'')}" placeholder="Chicago, IL" />
+          </div>
+          <div class="pp-field">
+            <div class="pp-label">Service Radius</div>
+            <select class="profile-select" id="ppe-service-radius">
+              ${[25,50,100,200].map(r =>
+                `<option value="${r}" ${d.service_radius_miles===r?'selected':''}>${r} miles</option>`).join('')}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pp-section">
+      <div class="pp-section-label">What You Sell</div>
+      <div class="product-list" id="panel-product-list">${productRows}</div>
+      <button class="add-product-btn" id="panel-add-product-btn" onclick="addPanelProductRow()"
+        ${products.length >= 5 ? 'disabled' : ''}>+ Add Another</button>
+    </div>
+
+    <div class="pp-section">
+      <div class="pp-section-label">Who You Sell To <span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:10px;color:var(--text-dim);">optional</span></div>
+      <textarea class="profile-textarea" id="ppe-target-customer" maxlength="200"
+        placeholder="Describe your typical customer…">${escHtml(d.target_customer||'')}</textarea>
+    </div>
+
+    <div class="profile-error" id="pp-save-error"></div>
+  `;
+}
+
+function addPanelProductRow() {
+  const list = document.getElementById('panel-product-list');
+  if (!list) return;
+  const rows = list.querySelectorAll('.product-row');
+  if (rows.length >= 5) return;
+  const row = document.createElement('div');
+  row.className = 'product-row';
+  row.innerHTML = `<input class="profile-input" type="text" placeholder="Product or service…" />
+    <button class="product-remove" onclick="removePanelProductRow(this)" title="Remove">×</button>`;
+  list.appendChild(row);
+  document.getElementById('panel-add-product-btn').disabled = list.querySelectorAll('.product-row').length >= 5;
+  row.querySelector('input').focus();
+}
+
+function removePanelProductRow(btn) {
+  const list = document.getElementById('panel-product-list');
+  btn.closest('.product-row').remove();
+  if (document.getElementById('panel-add-product-btn'))
+    document.getElementById('panel-add-product-btn').disabled = false;
+}
+
+function cancelProfileEdit() {
+  renderProfileView();
+}
+
+async function saveProfileFromPanel() {
+  const errEl = document.getElementById('pp-save-error');
+  if (errEl) errEl.textContent = '';
+
+  const companyName = document.getElementById('ppe-company-name')?.value.trim() || '';
+  const companyUrl  = document.getElementById('ppe-company-url')?.value.trim()  || '';
+  const industry    = document.getElementById('ppe-industry')?.value.trim()     || '';
+  const companySize = document.getElementById('ppe-company-size')?.value        || '';
+  const serviceArea = document.getElementById('ppe-service-area')?.value.trim() || '';
+  const radius      = document.getElementById('ppe-service-radius')?.value      || '50';
+  const targetCust  = document.getElementById('ppe-target-customer')?.value.trim() || '';
+  const products    = Array.from(document.querySelectorAll('#panel-product-list .product-row input'))
+                        .map(i => i.value.trim()).filter(Boolean);
+
+  if (!companyName) { if (errEl) errEl.textContent = 'Company name is required.'; return; }
+  if (!serviceArea)  { if (errEl) errEl.textContent = 'City / State is required.'; return; }
+  if (!products.length) { if (errEl) errEl.textContent = 'Add at least one product or service.'; return; }
+
+  const saveBtn = document.getElementById('pp-save-btn');
+  saveBtn.textContent = 'Saving…';
+  saveBtn.disabled = true;
+
+  try {
+    const res = await fetch('/api/profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        company_name: companyName, company_url: companyUrl,
+        company_size: companySize, industry,
+        service_area: serviceArea, service_radius_miles: parseInt(radius),
+        profile_products: products, target_customer: targetCust
+      })
+    });
+    if (!res.ok) throw new Error((await res.json()).error || 'Save failed.');
+    currentUser.profile_complete = 1;
+    profilePanelData = {
+      ...profilePanelData,
+      company_name: companyName, company_url: companyUrl, company_size: companySize,
+      industry, service_area: serviceArea, service_radius_miles: parseInt(radius),
+      profile_products: products, target_customer: targetCust, profile_complete: 1
+    };
+    applyProfileState();
+    document.getElementById('scout-locked-panel').style.display = 'none';
+    renderProfileView();
+  } catch (err) {
+    if (errEl) errEl.textContent = err.message;
+  } finally {
+    saveBtn.textContent = 'Save';
+    saveBtn.disabled = false;
+  }
+}
 
 // ── PROFILE AUTO-FILL ────────────────────────────────────────────────────────
 
@@ -2529,10 +2990,11 @@ let historyOpen = false;
 async function toggleHistory() {
   historyOpen = !historyOpen;
   const panel = document.getElementById('history-panel');
-  const btn   = document.getElementById('history-toggle-btn');
   panel.classList.toggle('open', historyOpen);
-  btn.classList.toggle('active', historyOpen);
-  if (historyOpen) await loadHistory();
+  if (historyOpen) {
+    closeProfilePanel();
+    await loadHistory();
+  }
 }
 
 async function loadHistory() {
