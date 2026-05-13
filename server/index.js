@@ -7,10 +7,11 @@ const path       = require('path');
 
 require('./db'); // initialize SQLite on startup
 
-const briefRouter  = require('./routes/brief');
-const briefsRouter = require('./routes/briefs');
-const exportRouter = require('./routes/export');
-const authRouter   = require('./routes/auth');
+const briefRouter   = require('./routes/brief');
+const briefsRouter  = require('./routes/briefs');
+const exportRouter  = require('./routes/export');
+const authRouter    = require('./routes/auth');
+const profileRouter = require('./routes/profile');
 
 const app = express();
 
@@ -27,10 +28,11 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // API routes
-app.use('/api/auth',   authRouter);
-app.use('/api/briefs', briefsRouter);
-app.use('/api/brief',  briefRouter);
-app.use('/api/export', exportRouter);
+app.use('/api/auth',    authRouter);
+app.use('/api/profile', profileRouter);
+app.use('/api/briefs',  briefsRouter);
+app.use('/api/brief',   briefRouter);
+app.use('/api/export',  exportRouter);
 
 // Static frontend files — must come after API routes
 app.use(express.static(path.join(__dirname, '../client')));

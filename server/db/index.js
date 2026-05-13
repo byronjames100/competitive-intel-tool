@@ -28,4 +28,23 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_briefs_user ON briefs(user_id, created_at DESC);
 `);
 
+// Profile columns migration — safe to run on every startup
+const existingCols = db.prepare('PRAGMA table_info(users)').all().map(c => c.name);
+const profileCols = [
+  ['company_name',         'TEXT NOT NULL DEFAULT ""'],
+  ['company_url',          'TEXT NOT NULL DEFAULT ""'],
+  ['company_size',         'TEXT NOT NULL DEFAULT ""'],
+  ['industry',             'TEXT NOT NULL DEFAULT ""'],
+  ['service_area',         'TEXT NOT NULL DEFAULT ""'],
+  ['service_radius_miles', 'INTEGER NOT NULL DEFAULT 50'],
+  ['profile_products',     'TEXT NOT NULL DEFAULT "[]"'],
+  ['target_customer',      'TEXT NOT NULL DEFAULT ""'],
+  ['profile_complete',     'INTEGER NOT NULL DEFAULT 0'],
+];
+for (const [col, def] of profileCols) {
+  if (!existingCols.includes(col)) {
+    db.exec(`ALTER TABLE users ADD COLUMN ${col} ${def}`);
+  }
+}
+
 module.exports = db;

@@ -74,7 +74,7 @@ router.get('/me', (req, res) => {
   if (!token) return res.status(401).json({ error: 'Not authenticated.' });
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    const user = db.prepare('SELECT id, email, name FROM users WHERE id = ?').get(payload.userId);
+    const user = db.prepare('SELECT id, email, name, profile_complete FROM users WHERE id = ?').get(payload.userId);
     if (!user) return res.status(401).json({ error: 'User not found.' });
     res.json(user);
   } catch {

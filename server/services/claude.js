@@ -58,4 +58,38 @@ async function generateBrief(content, originalUrl, wasScraped) {
   return JSON.parse(clean);
 }
 
-module.exports = { generateBrief };
+const AUTOFILL_PROMPT = `You are extracting company profile data from a company's own website content to help their sales rep set up an account.
+
+RULES:
+- Products: 3–5 specific offerings, 2–8 words each. Actual products/services, not marketing slogans.
+- Industry: 2–5 words describing their specialty (e.g. "CNC precision machining", "hydraulic components", "industrial filtration").
+- Company size: estimate from signals (team pages, office count, job postings, revenue mentions). Pick one: "1–50", "51–200", "201–500", "500+"
+- company_name: exact legal/trade name as shown on site.
+- If a field cannot be determined, use null.
+
+Return ONLY valid JSON:
+{
+  "company_name": "string or null",
+  "industry": "string or null",
+  "company_size": "1–50" | "51–200" | "201–500" | "500+" | null,
+  "products": ["product 1", "product 2"]
+}`;
+
+async function autoFillProfile(content, url) {
+  const userPrompt = content && content.length > 100
+    ? `Extract profile data from this company website content:\n\n${content}`
+    : `Extract profile data for the company at this URL using your knowledge: ${url}`;
+
+  const response = await client.messages.create({
+    model: 'claude-haiku-4-5-20251001',
+    max_tokens: 400,
+    system: AUTOFILL_PROMPT,
+    messages: [{ role: 'user', content: userPrompt }]
+  });
+
+  const raw   = response.content[0].text;
+  const clean = raw.replace(/```json|```/g, '').trim();
+  return JSON.parse(clean);
+}
+
+module.exports = { generateBrief, autoFillProfile };
