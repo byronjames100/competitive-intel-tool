@@ -1,0 +1,10 @@
+node_modules
+.env
+.git
+*.db
+*.db-shm
+*.db-wal
+files.zip
+IRONSCOUT.html
+IRONSCOUT_Master_Documentation_v2.docx
+.claude
